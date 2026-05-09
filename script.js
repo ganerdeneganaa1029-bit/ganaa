@@ -53,7 +53,7 @@ const DEFAULT_DATA = {
         {
             title: 'Student-assessment-system',
             desc: 'Хэрэглэгчдэд зориулсан даалгавар хянах систем. Drag & drop, шошго, хугацааны хяналт зэрэг боломжуудтай.',
-            tech: 'React, Redux, Firebase',
+            tech: 'React, Php, MySql',
             image: 'uploads/tosol.png',
             github: '#',
             demo: '#',
