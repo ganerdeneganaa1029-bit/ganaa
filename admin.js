@@ -6,9 +6,8 @@
 
 // ===== DEFAULTS =====
 const DEFAULT_SOCIAL = [
-    { platform: 'GitHub', url: 'https://github.com', icon: '🐙' },
-    { platform: 'LinkedIn', url: 'https://linkedin.com', icon: '💼' },
-    { platform: 'Facebook', url: 'https://facebook.com', icon: '👤' },
+    { platform: 'Instagram', url: 'https://www.instagram.com/gna_4ev?igsh=MWZmNjNibjNvcWdydQ%3D%3D&utm_source=qr', icon: '📸' },
+    { platform: 'Facebook', url: 'https://www.facebook.com/share/1B95qbaU9K/?mibextid=wwXIfr', icon: '👤' },
 ];
 
 const DEFAULT_SKILLS = [
@@ -24,26 +23,18 @@ const DEFAULT_SKILLS = [
 
 const DEFAULT_PROJECTS = [
     {
-        title: 'E-Commerce платформ',
-        desc: 'React болон Node.js ашиглан бүтээсэн бүрэн функциональ онлайн дэлгүүр.',
-        tech: 'React, Node.js, MongoDB, Stripe',
-        image: '',
-        github: '#',
-        demo: '#',
-    },
-    {
         title: 'Portfolio CMS систем',
-        desc: 'Динамик portfolio вэбсайт. Admin хэсэгтэй, localStorage ашигласан контент удирдлага.',
-        tech: 'HTML, CSS, JavaScript, Bootstrap',
-        image: '',
+        desc: 'Динамик portfolio вэбсайт. Admin хэсэгтэй, localStorage ашигласан контент удирдлага, бүрэн responsive дизайн.',
+        tech: 'HTML, CSS, JavaScript',
+        image: 'uploads/download.jpg',
         github: '#',
         demo: '#',
     },
     {
-        title: 'Task Manager App',
-        desc: 'Хэрэглэгчдэд зориулсан даалгавар хянах систем. Drag & drop, шошго зэрэг боломжуудтай.',
-        tech: 'React, Redux, Firebase',
-        image: '',
+        title: 'STUDENT-ASSESSMENT-SYSTEM',
+        desc: 'Хэрэглэгчдэд зориулсан даалгавар хянах систем. Drag & drop, шошго, хугацааны хяналт зэрэг боломжуудтай.',
+        tech: 'React, Php, MySQL',
+        image: 'uploads/tosol.png',
         github: '#',
         demo: '#',
     },
@@ -62,7 +53,71 @@ function seedDefaults() {
     }
 }
 
-// ===== HELPERS =====
+// ===== LOGIN =====
+// Default credentials — admin can change password via Settings (future)
+const ADMIN_USER = 'admin';
+const ADMIN_PASS = 'admin1234'; // Change this to your preferred password
+const SESSION_KEY = 'adminSession';
+
+function checkLogin() {
+    const overlay = document.getElementById('loginOverlay');
+    if (!overlay) return;
+
+    // Check existing session (expires after 8 hours)
+    const session = getStore(SESSION_KEY, null);
+    if (session && session.expires > Date.now()) {
+        overlay.style.display = 'none';
+        return;
+    }
+    overlay.style.display = 'flex';
+}
+
+function doLogin() {
+    const username = document.getElementById('loginUsername')?.value.trim();
+    const password = document.getElementById('loginPassword')?.value;
+    const errEl = document.getElementById('loginError');
+
+    if (username === ADMIN_USER && password === ADMIN_PASS) {
+        // Save session for 8 hours
+        setStore(SESSION_KEY, { expires: Date.now() + 8 * 60 * 60 * 1000 });
+        const overlay = document.getElementById('loginOverlay');
+        if (overlay) {
+            overlay.style.transition = 'opacity 0.4s';
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.style.display = 'none', 400);
+        }
+        showNotification('✓ Амжилттай нэвтэрлээ!');
+    } else {
+        if (errEl) {
+            errEl.style.display = 'block';
+            errEl.textContent = !username || !password
+                ? 'Нэвтрэх нэр болон нууц үгийг бөглөнө үү'
+                : 'Нэвтрэх нэр эсвэл нууц үг буруу байна';
+        }
+        // Shake animation
+        const pwdInput = document.getElementById('loginPassword');
+        if (pwdInput) {
+            pwdInput.style.borderColor = '#e53935';
+            pwdInput.style.animation = 'shake 0.4s ease';
+            setTimeout(() => {
+                pwdInput.style.animation = '';
+                pwdInput.style.borderColor = 'var(--border)';
+            }, 400);
+        }
+    }
+}
+
+function togglePwd() {
+    const el = document.getElementById('loginPassword');
+    if (el) el.type = el.type === 'password' ? 'text' : 'password';
+}
+
+function doLogout() {
+    localStorage.removeItem(SESSION_KEY);
+    location.reload();
+}
+
+
 function escHtml(str) {
     if (!str) return '';
     return String(str)
@@ -572,6 +627,7 @@ function setVal(id, v) {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
+    checkLogin();
     seedDefaults();
     loadDashboard();
 });
