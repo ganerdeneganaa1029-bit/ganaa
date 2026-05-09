@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Монхбаяр - Full Stack Developer Portfolio">
+    <meta name="keywords" content="Full Stack Developer, Web Developer, Mongolia, Portfolio">
+    <meta name="author" content="Ган Эрдэнэ">
+    <title>Ган Эрдэнэ · Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-logo">G</div>
+            <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+            <span class="loader-text" id="loaderText">Ачааллаж байна...</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a class="nav-brand" href="#home">
+                <span class="brand-letter">G</span><span class="brand-dot">·</span>E
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active" data-section="home">Нүүр</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">Тухай</a></li>
+                <li><a href="#education" class="nav-link" data-section="education">Боловсрол</a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills">Чадвар</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Төслүүд</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Холбоо</a></li>
+                <li><a href="admin.html" class="nav-link nav-admin">⚙ Admin</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="hero-grid"></div>
+            <div class="hero-glow"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-status reveal-up">
+                    <span class="status-dot"></span>
+                    <span>Ажиллах боломжтой</span>
+                </div>
+                <h1 class="hero-title reveal-up delay-1">
+                    <span class="title-greeting">Сайн уу, би</span>
+                    <span class="title-name" id="heroName">Монхбаяр</span>
+                    <span class="title-role" id="heroRole">
+                        <span class="typed-text" id="typedText"></span>
+                        <span class="typed-cursor">|</span>
+                    </span>
+                </h1>
+                <p class="hero-bio reveal-up delay-2" id="heroBio">
+                    Full Stack Developer — веб технологийг ашиглан өндөр чанарын, ашиглахад хялбар 
+                    шийдлүүд бүтээдэг. Техникийн нарийн бүтэц болон нүдний дизайн хосолсон бүтээлч хөгжүүлэгч.
+                </p>
+                <div class="hero-actions reveal-up delay-3">
+                    <a href="#projects" class="btn btn-primary">Төслүүдийг үз <span class="btn-arrow">→</span></a>
+                    <a href="#contact" class="btn btn-ghost">Холбоо барих</a>
+                </div>
+                <div class="hero-social reveal-up delay-4" id="heroSocial">
+                    <a href="https://github.com" target="_blank" class="social-link" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Facebook
+                    </a>
+                </div>
+                <div class="hero-stats reveal-up delay-5">
+                    <div class="stat-item">
+                        <span class="stat-num" id="heroYears" data-count="2">0</span><span class="stat-plus">+</span>
+                        <p>Жил туршлага</p>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num" id="heroProjects" data-count="8">0</span><span class="stat-plus">+</span>
+                        <p>Төслүүд</p>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num" id="heroTech" data-count="10">0</span><span class="stat-plus">+</span>
+                        <p>Технологи</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right reveal-right delay-2">
+                <div class="profile-frame">
+                    <div class="profile-ring ring-1"></div>
+                    <div class="profile-ring ring-2"></div>
+                    <div class="profile-img-wrap">
+                        <img id="heroProfileImg" src="https://via.placeholder.com/400/0a0a0a/c9a84c?text=M" alt="Монхбаяр" class="profile-img">
+                    </div>
+                    <div class="floating-card card-html">
+                        <span class="fc-icon">⟨⟩</span>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="floating-card card-css">
+                        <span class="fc-icon">#</span>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="floating-card card-js">
+                        <span class="fc-icon">JS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="floating-card card-react">
+                        <span class="fc-icon">⚛</span>
+                        <span>React</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Доош гүйлгэ</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-label reveal-up">01 · ТУХАЙ</div>
+            <div class="section-header reveal-up">
+                <h2 class="section-title">Миний <em>тухай</em></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-image reveal-left">
+                    <div class="about-img-frame">
+                        <img src="uploads/profile1.jpeg" alt="Code" class="about-img">
+                        <div class="img-accent"></div>
+                    </div>
+                    <div class="about-stats-card">
+                        <div class="asc-item">
+                            <h4 id="aboutYears">2+</h4>
+                            <p>Жил</p>
+                        </div>
+                        <div class="asc-item">
+                            <h4 id="aboutProjects">8+</h4>
+                            <p>Төсөл</p>
+                        </div>
+                        <div class="asc-item">
+                            <h4 id="aboutTech">10+</h4>
+                            <p>Технологи</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content reveal-right">
+                    <p class="about-text" id="aboutBioText">
+                        Full Stack Developer — HTML, CSS, JavaScript болон орчин үеийн framework-ууд ашиглан 
+                        өндөр чанарын веб шийдэл бүтээдэг. Техникийн нарийн бүтэц болон гоё дизайн хосолсон бүтээлч хөгжүүлэгч.
+                    </p>
+                    <p class="about-text">
+                       Миний зорилго бол ашиглахад хялбар,орчин үеийн бөгөөд техникийн хувьд найдвартай бүтээгдэхүүн хөгжүүлэх юм. 
+Хэрэглэгчийн туршлага, дизайн болон гүйцэтгэлийг зэрэг чухалчилж, энгийн мөртлөө үнэ цэнтэй digital solution бүтээхийг зорьдог. 
+Шинэ технологи сурч, түүнийг бодит төсөл дээр хэрэгжүүлэх нь миний хамгийн дуртай зүйлсийн нэг.
+                    </p>
+                    <div class="about-tags">
+                        <h5>⚡ Сонирхол</h5>
+                        <div class="tags-wrap">
+                            <span class="tag">Веб хөгжүүлэлт</span>
+                            <span class="tag">UI/UX дизайн</span>
+                            
+                            <span class="tag">Мобайл App</span>
+                           
+                        </div>
+                    </div>
+                    <div class="about-goals">
+                        <h5>🎯 Зорилгууд</h5>
+                        <ul class="goals-list">
+<li>Full Stack Developer болох</li>
+<li>Нээлттэй эхийн төслүүдэд оролцох</li>
+
+
+<li>Олон улсын хэмжээний төсөл дээр ажиллах</li>
+
+<li>Бусад хөгжүүлэгчидтэй хамтран community үүсгэх</li>
+<li>Технологийн салбарт өөрийн брэндийг бий болгох</li>
+                        </ul>
+                    </div>
+                    <div class="about-contact-grid">
+                        <div class="aci">
+                            <span class="aci-label">Имэйл</span>
+                            <a href="mailto:munkbayar@example.mn" id="contactEmail">munkbayar@example.mn</a>
+                        </div>
+                        <div class="aci">
+                            <span class="aci-label">Утас</span>
+                            <a href="tel:+97699001122" id="contactPhone">+976 9900 1122</a>
+                        </div>
+                        <div class="aci">
+                            <span class="aci-label">Байршил</span>
+                            <span id="contactLocation">Улаанбаатар, Монгол</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section education-section">
+        <div class="container">
+            <div class="section-label reveal-up">02 · БОЛОВСРОЛ</div>
+            <div class="section-header reveal-up">
+                <h2 class="section-title">Боловсрол & <em>Сертификат</em></h2>
+            </div>
+            <div class="education-grid" id="educationContainer">
+                <!-- Education cards rendered by JS -->
+                <div class="edu-card reveal-up" data-delay="0">
+                    <div class="edu-year">2010 — 2022</div>
+                    <div class="edu-content">
+                        <div class="edu-icon">🎓</div>
+                        <div class="edu-info">
+                            <h3 class="edu-degree">Бүрэн Дунд Боловсрол</h3>
+                            <p class="edu-school">Ерөнхий Боловсрол Сургууль · Ховд Алтай</p>
+                            <p class="edu-desc">Бүрэн дунд боловсролын хугацаандаа мэдээллийн технологи, програмчлал болон компьютерийн хэрэглээний суурь мэдлэг эзэмшиж, технологийн чиглэлээр илүү гүнзгий суралцах сонирхлоо хөгжүүлсэн. 
+Мөн багаар ажиллах, асуудал шийдвэрлэх болон шинэ зүйл бие даан суралцах чадвараа сайжруулсан.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="edu-card reveal-up" data-delay="100">
+                    <div class="edu-year">2023 — 2027</div>
+                    <div class="edu-content">
+                        <div class="edu-icon">🎓</div>
+                        <div class="edu-info">
+                            <h3 class="edu-degree">Их сургууль</h3>
+                            <p class="edu-school">Компюьтер програм хангамж · Их засаг олон улсын их сургууль</p>
+                            <p class="edu-desc">Программ хангамжийн инженерчлэл, мэдээллийн системийн чиглэлээр суралцсан. Програмчлал, алгоритм, мэдээллийн сан зэрэг хичээлүүдийг судалсан.</p>
+                            <div class="edu-tags">
+                                 <span>Бакалавр</span>
+                                <span>4.0 </span>
+                                <span>Дипломын ажил: Веб платформ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <div class="section-label reveal-up">03 · УР ЧАДВАР</div>
+            <div class="section-header reveal-up">
+                <h2 class="section-title">Техникийн <em>чадвар</em></h2>
+            </div>
+            <div class="skills-grid" id="skillsContainer">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-label reveal-up">04 · ТӨСЛҮҮД</div>
+            <div class="section-header reveal-up">
+                <h2 class="section-title">Миний <em>төслүүд</em></h2>
+            </div>
+            <div class="projects-grid" id="projectsContainer">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-label reveal-up">05 · ХОЛБОО БАРИХ</div>
+            <div class="section-header reveal-up">
+                <h2 class="section-title">Холбоо <em>барих</em></h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-left reveal-left">
+                    <p class="contact-intro">
+                        Хамтран ажиллах санал, шинэ боломж, эсвэл зүгээр л мэндчилэхийг хүсвэл холбогдоорой!
+                    </p>
+                    <div class="contact-info-list">
+                        <div class="ci-item">
+                            <div class="ci-icon">✉</div>
+                            <div>
+                                <span class="ci-label">Имэйл</span>
+                                <a href="mailto:munkbayar@example.mn" id="footerEmail">munkbayar@example.mn</a>
+                            </div>
+                        </div>
+                        <div class="ci-item">
+                            <div class="ci-icon">☎</div>
+                            <div>
+                                <span class="ci-label">Утас</span>
+                                <a href="tel:+97699001122" id="footerPhone">+976 9900 1122</a>
+                            </div>
+                        </div>
+                        <div class="ci-item">
+                            <div class="ci-icon">⌖</div>
+                            <div>
+                                <span class="ci-label">Байршил</span>
+                                <span id="footerLocation">Улаанбаатар, Монгол</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social" id="contactSocialLinks">
+                        <a href="https://github.com" target="_blank" class="cs-link">GitHub →</a>
+                        <a href="https://linkedin.com" target="_blank" class="cs-link">LinkedIn →</a>
+                        <a href="https://facebook.com" target="_blank" class="cs-link">Facebook →</a>
+                    </div>
+                </div>
+                <div class="contact-right reveal-right">
+                    <div id="formMessage"></div>
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <div class="form-row-2">
+                            <div class="form-field">
+                                <label for="name">Нэр <span class="req">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="Таны нэр" required autocomplete="name">
+                                <span class="field-error" id="nameError"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Имэйл <span class="req">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="email@example.com" required autocomplete="email">
+                                <span class="field-error" id="emailError"></span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="subject">Сэдэв <span class="req">*</span></label>
+                            <input type="text" id="subject" name="subject" placeholder="Захидлын сэдэв" required>
+                            <span class="field-error" id="subjectError"></span>
+                        </div>
+                        <div class="form-field">
+                            <label for="message">Мессеж <span class="req">*</span></label>
+                            <textarea id="message" name="message" rows="6" placeholder="Таны мессеж..." required></textarea>
+                            <span class="field-error" id="messageError"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <span class="btn-text">Илгээх</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="brand-letter">G</span><span class="brand-dot">·</span>E
+            </div>
+            <div class="footer-center">
+                <p>Хийсэн ❤️ — 2026 он · Улаанбаатар</p>
+                <small><a href="#" onclick="enableAdminMode()" class="footer-admin-link">Admin</a></small>
+            </div>
+            <div class="footer-right" id="footerSocial">
+                <a href="https://github.com" target="_blank" class="footer-social-link" aria-label="GitHub">GH</a>
+                <a href="https://linkedin.com" target="_blank" class="footer-social-link" aria-label="LinkedIn">LI</a>
+                <a href="https://facebook.com" target="_blank" class="footer-social-link" aria-label="Facebook">FB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
