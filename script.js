@@ -4,6 +4,19 @@
 
 'use strict';
 
+// ========== DATA VERSION ==========
+// Bump this number whenever DEFAULT_DATA changes — forces localStorage reset on all visitors
+const DATA_VERSION = '2';
+
+function migrateData() {
+    const stored = localStorage.getItem('dataVersion');
+    if (stored !== DATA_VERSION) {
+        // Clear only app data, keep adminSession
+        ['adminProjects', 'adminSkills', 'adminSocial'].forEach(k => localStorage.removeItem(k));
+        localStorage.setItem('dataVersion', DATA_VERSION);
+    }
+}
+
 // ========== CONFIG ==========
 const DEFAULT_DATA = {
     profile: {
@@ -13,10 +26,10 @@ const DEFAULT_DATA = {
         email: 'ganerdeneganaa1029@gmail.com',
         phone: '+976 8558 1847',
         location: 'Улаанбаатар, Монгол',
-        years: 0,
+        years: 2,
         projects: 2,
         tech: 10,
-        image: 'uploads/profile.jpeg',
+        image: '',
     },
     skills: [
         { name: 'HTML5 / CSS3', level: 92 },
@@ -31,19 +44,19 @@ const DEFAULT_DATA = {
     projects: [
         {
             title: 'Portfolio CMS систем',
-        desc: 'Динамик portfolio вэбсайт. Admin хэсэгтэй, localStorage ашигласан контент удирдлага, бүрэн responsive дизайн.',
-        tech: 'HTML, CSS, JavaScript',
-        image: 'uploads/download.jpg',
-        github: '#',
-        demo: '#',
+            desc: 'Динамик portfolio вэбсайт. Admin хэсэгтэй, localStorage ашигласан контент удирдлага, бүрэн responsive дизайн.',
+            tech: 'HTML, CSS, JavaScript',
+            image: 'https://via.placeholder.com/600x300/111/c9a84c?text=Portfolio+CMS',
+            github: '#',
+            demo: '#',
         },
         {
-            title: 'STUDENT-ASSESSMENT-SYSTEM',
-        desc: 'Хэрэглэгчдэд зориулсан даалгавар хянах систем. Drag & drop, шошго, хугацааны хяналт зэрэг боломжуудтай.',
-        tech: 'React, Php, MySQL',
-        image: 'uploads/tosol.png',
-        github: '#',
-        demo: '#',
+            title: 'Task Manager App',
+            desc: 'Хэрэглэгчдэд зориулсан даалгавар хянах систем. Drag & drop, шошго, хугацааны хяналт зэрэг боломжуудтай.',
+            tech: 'React, Redux, Firebase',
+            image: 'https://via.placeholder.com/600x300/111/c9a84c?text=Task+Manager',
+            github: '#',
+            demo: '#',
         },
     ],
     social: [
@@ -531,6 +544,7 @@ function startAnimations() {
 
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
+    migrateData(); // ← clear stale cache if data version changed
     initLoader();
     initCursor();
     initNavbar();

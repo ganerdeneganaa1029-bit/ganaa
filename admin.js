@@ -26,22 +26,30 @@ const DEFAULT_PROJECTS = [
         title: 'Portfolio CMS систем',
         desc: 'Динамик portfolio вэбсайт. Admin хэсэгтэй, localStorage ашигласан контент удирдлага, бүрэн responsive дизайн.',
         tech: 'HTML, CSS, JavaScript',
-        image: 'uploads/download.jpg',
+        image: '',
         github: '#',
         demo: '#',
     },
     {
-        title: 'STUDENT-ASSESSMENT-SYSTEM',
+        title: 'Task Manager App',
         desc: 'Хэрэглэгчдэд зориулсан даалгавар хянах систем. Drag & drop, шошго, хугацааны хяналт зэрэг боломжуудтай.',
-        tech: 'React, Php, MySQL',
-        image: 'uploads/tosol.png',
+        tech: 'React, Redux, Firebase',
+        image: '',
         github: '#',
         demo: '#',
     },
 ];
 
-// Seed default data if localStorage is empty
+// Seed default data if localStorage is empty or version mismatch
 function seedDefaults() {
+    const DATA_VERSION = '2';
+    const stored = localStorage.getItem('dataVersion');
+    if (stored !== DATA_VERSION) {
+        localStorage.removeItem('adminProjects');
+        localStorage.removeItem('adminSkills');
+        localStorage.removeItem('adminSocial');
+        localStorage.setItem('dataVersion', DATA_VERSION);
+    }
     if (!localStorage.getItem('adminSocial')) {
         setStore('adminSocial', DEFAULT_SOCIAL);
     }
